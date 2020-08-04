@@ -21,8 +21,11 @@
 							<ul>
 								<li><a href="{% url 'home' %}">Home</a></li>
 
-								{% if  user.is_authenticated %}
-								<li><a href="#">meus posts</a></li>
+								{% if user.is_authenticated %}
+									<li><a href="#">meus posts</a></li>
+
+								{% else %}
+									<li><a href="#">O usuario nao esta autenticado</a></li>
 								{% endif %}
 
 							</ul>
@@ -84,23 +87,30 @@
 
 						<!-- Actions -->
 							<section>
-								<form action="">
+								{% if user.is_authenticated %}
+									<a href="logout/" class="button large fit">Sair</a>
 
-								<ul class="actions stacked">
-									<li>
-										<div class="col-6 col-12-xsmall">
-											<input type="text" name="username" id="username" value="" placeholder="Nome do usuário" />
-										</div>
-									</li>
-									<li>
-										<div class="col-6 col-12-xsmall">
-											<input type="password" name="password" id="password" value="" placeholder="Senha " />
-										</div>
-									</li>
-									<li><a href="#" class="button large fit">Log In</a></li>
-								</ul>
+								{% else %}
+									<form method="POST">
+										{% csrf_token %}
+									<ul class="actions stacked">
+										<li>
+											<div class="col-6 col-12-xsmall">
+												<input type="text" name="username" id="username" value="" placeholder="Nome do usuário" />
+											</div>
+										</li>
+										<li>
+											<div class="col-6 col-12-xsmall">
+												<input type="password" name="password" id="password" value="" placeholder="Senha " />
+											</div>
+										</li>
+										<li>
+											<button type="submit">Login</button>
+										</li>
+									</ul>
 
-								</form>
+									</form>
+								{%  endif %}
 							</section>
 
 					</section>
