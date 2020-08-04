@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<div id="main">
+		<article class="post">
+			<header>
+				<div class="title">
+					<h2>{{ post.title }}</h2>
+					<p>{{ post.sub_title }}</p>
+				</div>
+<!--				<div class="meta">-->
+<!--					<time class="published" datetime="2015-11-01">November 1, 2015</time>-->
+<!--					<a href="#" class="author"><span class="name">Jane Doe</span><img src="images/avatar.jpg" alt="" /></a>-->
+<!--				</div>-->
+			</header>
+<!--			{% if post.photo %}-->
+<!--				<span class="image featured"><img src="{{ post.photo.url }}" alt="" /></span>-->
+<!--			{% else %}-->
+<!--				<p>Image não existe</p>-->
+<!--				<p>Image não existe</p>-->
+<!--			{% endif %}-->
+			<p>{{ post.content }}</p>
+
+		</article>
+
+</div>
+
+{% endblock %}

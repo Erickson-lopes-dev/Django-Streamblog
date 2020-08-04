@@ -1,0 +1,156 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>StreamBlog - {% block title %}{% endblock %}</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html">StreamBlog</a></h1>
+						<nav class="links">
+							<ul>
+								<li><a href="{% url 'home' %}">Home</a></li>
+
+								{% if  user.is_authenticated %}
+								<li><a href="#">meus posts</a></li>
+								{% endif %}
+
+							</ul>
+						</nav>
+						<nav class="main">
+							<ul>
+<!--								<li class="search">-->
+<!--									<a class="fa-search" href="#search">Search</a>-->
+<!--									<form id="search" method="get" action="#">-->
+<!--										<input type="text" name="query" placeholder="Search" />-->
+<!--									</form>-->
+<!--								</li>-->
+								<li class="menu">
+									<a class="fa-bars" href="#menu">Menu</a>
+								</li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<section id="menu">
+
+						<!-- Search -->
+							<section>
+								<form class="search" method="get" action="#">
+									<input type="text" name="query" placeholder="Search" />
+								</form>
+							</section>
+
+						<!-- Links -->
+							<section>
+								<ul class="links">
+									<li>
+										<a href="#">
+											<h3>Lorem ipsum</h3>
+											<p>Feugiat tempus veroeros dolor</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<h3>Dolor sit amet</h3>
+											<p>Sed vitae justo condimentum</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<h3>Feugiat veroeros</h3>
+											<p>Phasellus sed ultricies mi congue</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<h3>Etiam sed consequat</h3>
+											<p>Porta lectus amet ultricies</p>
+										</a>
+									</li>
+								</ul>
+							</section>
+
+						<!-- Actions -->
+							<section>
+								<form action="">
+
+								<ul class="actions stacked">
+									<li>
+										<div class="col-6 col-12-xsmall">
+											<input type="text" name="username" id="username" value="" placeholder="Nome do usuário" />
+										</div>
+									</li>
+									<li>
+										<div class="col-6 col-12-xsmall">
+											<input type="password" name="password" id="password" value="" placeholder="Senha " />
+										</div>
+									</li>
+									<li><a href="#" class="button large fit">Log In</a></li>
+								</ul>
+
+								</form>
+							</section>
+
+					</section>
+
+				{% block content %}
+
+                {% endblock %}
+
+
+				<!-- Sidebar -->
+					<section id="sidebar">
+
+						<!-- Intro -->
+							<section id="intro">
+								<a href="#" class="logo"><img src="{% static 'images/logo.jpg' %}" alt="" /></a>
+								<header>
+									<h2>StreamBlog</h2>
+									<p>Repositório do código no git-hub <a href="https://github.com/Erickson-lopes-dev/Django-Streamblog">AQUI</a></p>
+								</header>
+							</section>
+
+
+						<!-- About -->
+							<section class="blurb">
+								<h2>Sobre</h2>
+								<p>Este blog é direcionado apenas para treinar e desenvovler habilidades com o django, um projeto de mini blog.</p>
+								<ul class="actions">
+									<li><a href="#" class="button">Learn More</a></li>
+								</ul>
+							</section>
+
+						<!-- Footer -->
+							<section id="footer">
+								<ul class="icons">
+									<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+									<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+								</ul>
+								<p class="copyright">&copy; <a href="https://www.linkedin.com/in/ericksonlopesdev/">erickson_dev </a></p>
+							</section>
+
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'assets/js/browser.min.js' %}"></script>
+			<script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
+			<script src="{% static 'assets/js/util.js' %}"></script>
+			<script src="{% static 'assets/js/main.js' %}"></script>
+
+	</body>
+</html>

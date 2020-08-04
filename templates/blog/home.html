@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div id="main">
+	{% for post in posts %}
+		<article class="post">
+			<header>
+				<div class="title">
+					<h2><a href="{% url 'single' post.id %}">{{ post.title }}</a></h2>
+					<p>{{ post.sub_title }}</p>
+				</div>
+				<div class="meta">
+					<time class="published" datetime="2015-11-01">{{ post.date_post }}</time>
+					<a href="#" class="author">{{ post.user }}<span class="name"></span></a>
+				</div>
+			</header>
+<!--			<img src="{{ post.photo.url }}" alt="" />-->
+			<footer>
+				<ul class="actions">
+					<li><a href="{% url 'single' post.id %}" class="button large">Continue lendo</a></li>
+				</ul>
+			</footer>
+		</article>
+	{% endfor %}
+</div>
+
+{% endblock %}
