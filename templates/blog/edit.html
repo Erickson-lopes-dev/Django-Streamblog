@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block title %} Atualizando post{% endblock %}
+
+{% block content %}
+
+
+<div id="main">
+    <center>
+    <ul class="actions">
+		<li><a href="{% url 'mypost' %}" class="button large">Voltar</a></li>
+        <li>
+            {% if message %}
+                    {{ message }}
+            {% endif %}
+        </li>
+	</ul>
+    </center>
+<form method="post" action="{% url 'edit_post' post.id %}">
+    {% include 'blog/form.html' %}
+</form>
+</div>
+
+{% endblock %}

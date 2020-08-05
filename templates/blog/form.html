@@ -1,0 +1,19 @@
+{% csrf_token %}
+    <div class="row gtr-uniform">
+        <div class="col-6 col-12-xsmall">
+            <input type="text" name="title" value="{{ post.title }}" placeholder="Titulo" />
+        </div>
+        <div class="col-6 col-12-xsmall">
+            <input type="text" name="sub_title"  value="{{ post.sub_title }}" placeholder="Sub_titulo" />
+        </div>
+
+        <div class="col-12">
+            <textarea name="content"  placeholder="Inserir seu texto"  rows="10">{{ post.content }}</textarea>
+        </div>
+        <div class="col-12">
+            <ul class="actions">
+                <li><input type="submit" value="Salvar" /></li>
+<!--                <li><input type="reset" value="Resetar" /></li>-->
+            </ul>
+        </div>
+    </div>

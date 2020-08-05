@@ -54,18 +54,47 @@ def django_login(request):
     return render(request, 'registration/login.html', {'message': 'Usuário não existe'})
 
 
-@login_required(login_url='/login/')
-def django_logout(request):
-    logout(request)
-    return redirect('/')
-
-
 def single(request, pk):
     post = Post.objects.get(pk=pk)
     return render(request, 'blog/single.html', {'post': post})
 
 
 @login_required(login_url='/login/')
+def django_logout(request):
+    logout(request)
+    return redirect('/')
+
+
+@login_required(login_url='/login/')
 def my_posts(request):
     posts = Post.objects.filter(user=request.user.id)
     return render(request, 'blog/mypost.html', {'posts': posts})
+
+
+@login_required(login_url='/login/')
+def create(request):
+    if request.POST:
+        Post.objects.create(
+            title=request.POST['title'],
+            sub_title=request.POST['sub_title'],
+            content=request.POST['content'],
+            user=request.user
+        )
+        return render(request, 'blog/create.html', {'message': 'Salvo com sucesso'})
+    return render(request, 'blog/create.html')
+
+
+@login_required(login_url='/login/')
+def edit(request, pk):
+    if request.method == "GET":
+        post = Post.objects.get(pk=pk)
+        return render(request, 'blog/edit.html', {"post": post})
+
+    post = Post.objects.filter(pk=pk).update(
+        title=request.POST['title'],
+        sub_title=request.POST['sub_title'],
+        content=request.POST['content'],
+        user=request.user
+    )
+    return render(request, 'blog/edit.html', {"post": Post.objects.get(pk=pk), 'message': 'Atualizado!'})
+

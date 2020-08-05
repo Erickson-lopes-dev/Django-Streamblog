@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block title %} Meus posts{% endblock %}
+
+{% block content %}
+
+<div id="main">
+    <ul class="actions">
+		<li><a href="{% url 'mypost' %}" class="button large">Voltar</a></li>
+	</ul>
+<form method="post" action="{% url 'create_post' %}">
+    {% include 'blog/form.html' %}
+</form>
+</div>
+
+{% endblock %}

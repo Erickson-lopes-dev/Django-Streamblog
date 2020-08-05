@@ -5,6 +5,9 @@
 {% block content %}
 
 <div id="main">
+	<ul class="actions">
+		<li><a href="{% url 'create_post' %}" class="button large">Criar novo post</a></li>
+	</ul>
 	{% for post in posts %}
 		<article class="post">
 			<header>
@@ -21,6 +24,7 @@
 			<footer>
 				<ul class="actions">
 					<li><a href="{% url 'single' post.id %}" class="button large">Continue lendo</a></li>
+					<li><a href="{% url 'edit_post' post.id %}" class="button large">Editar</a></li>
 				</ul>
 			</footer>
 		</article>
