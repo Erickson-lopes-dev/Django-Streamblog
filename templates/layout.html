@@ -22,7 +22,7 @@
 								<li><a href="{% url 'home' %}">Home</a></li>
 
 								{% if user.is_authenticated %}
-									<li><a href="#">meus posts</a></li>
+									<li><a href="{% url 'mypost' %}">meus posts</a></li>
 
 								{% else %}
 									<li><a href="#">O usuario nao esta autenticado</a></li>

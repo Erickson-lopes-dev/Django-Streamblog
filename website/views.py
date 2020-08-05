@@ -63,3 +63,9 @@ def django_logout(request):
 def single(request, pk):
     post = Post.objects.get(pk=pk)
     return render(request, 'blog/single.html', {'post': post})
+
+
+@login_required(login_url='/login/')
+def my_posts(request):
+    posts = Post.objects.filter(user=request.user.id)
+    return render(request, 'blog/mypost.html', {'posts': posts})
