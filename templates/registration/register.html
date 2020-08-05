@@ -12,22 +12,36 @@
 
 <h1>Login</h1>
 <center>
-    <form method="POST" action="/register/" autocomplete="off">
+    {% if message %}
+        {{ message }}
+    {% endif %}
+    <form method="POST" action="/register/" autocomplete="NoAutocomplete">
         {% csrf_token %}
     <ul class="actions stacked">
         <li>
             <div class="col-6 col-12-xsmall">
-                <input type="text" name="username" value="" placeholder="Nome do usuário" required autocomplete="off" style=""/>
+                <input type="text" name="first_name" id="first_name" value="{{ first_name }}" placeholder="Primeiro nome" />
             </div>
         </li>
         <li>
             <div class="col-6 col-12-xsmall">
-                <input type="email" name="username" value="" placeholder="Email@gmail.com" required autocomplete="off"/>
+                <input type="text" name="last_name" id="last_name" value="{{ last_name }}" placeholder="Segundo nome "/>
+            </div>
+
+        </li>
+        <li>
+            <div class="col-6 col-12-xsmall">
+                <input type="text" name="username"  value="{{ username }}" placeholder="Nome do usuário" required  />
             </div>
         </li>
         <li>
             <div class="col-6 col-12-xsmall">
-                <input type="password" name="password" value="" placeholder="Senha" required autocomplete="off"/>
+                <input type="email" name="email"  value="{{ email }}" placeholder="usuario@gmail.com" required />
+            </div>
+        </li>
+        <li>
+            <div class="col-6 col-12-xsmall">
+                <input  type="password" name="password" value="{{ password }}" placeholder="Senha" required />
             </div>
         </li>
         <li>

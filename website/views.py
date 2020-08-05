@@ -17,13 +17,25 @@ def register(request):
     username = request.POST.get('username')
     email = request.POST.get('email')
     password = request.POST.get('password')
+    first_name = request.POST.get('first_name')
+    last_name = request.POST.get('last_name')
 
-    user = User.objects.create_user(
-        username=username,
-        email=email,
-        password=password
-    )
-    return render(request, 'registration/login.html', {'message': f'Usuário criado com sucesso {user}'})
+    try:
+        user = User.objects.create_user(
+            first_name=first_name,
+            last_name=last_name,
+            username=username,
+            email=email,
+            password=password,
+        )
+
+    except Exception:
+        return render(request, 'registration/register.html',
+                      {'message': f'Não foi possível criar um novo usuário', 'username': username, 'email': email, })
+    else:
+        if user:
+            return render(request, 'registration/login.html',
+                          {'message': f'Olá, {user.username} você foi registrado com sucesso!'})
 
 
 def django_login(request):
@@ -38,6 +50,8 @@ def django_login(request):
     if user:
         login(request, user)
         return render(request, 'blog/home.html', {'posts': posts})
+
+    return render(request, 'registration/login.html', {'message': 'Usuário não existe'})
 
 
 @login_required(login_url='/login/')

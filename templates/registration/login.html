@@ -14,6 +14,7 @@
 <center>
     {% if message %}
         {{ message }}
+    {% endif %}
     <form method="POST" action="/login/" autocomplete="off">
         {% csrf_token %}
     <ul class="actions stacked">
@@ -24,7 +25,7 @@
         </li>
         <li>
             <div class="col-6 col-12-xsmall">
-                <input type="password" name="password" id="password" value="" placeholder="Senha " />
+                <input type="password" name="password" id="password" placeholder="Senha" />
             </div>
         </li>
         <li>
